@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="foodviewmodel"
+            type="com.example.givemethefood.viewModel.FoodViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_conversion_absoluteHeight="245dp"
+        tools:layout_conversion_absoluteWidth="411dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_cardview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardframe"
+            android:outlineAmbientShadowColor="#100E0E"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"
+            app:layout_constraintEnd_toStartOf="@+id/fev_imageView"
+            app:layout_constraintStart_toEndOf="@id/logo"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            tools:layout_conversion_absoluteHeight="34dp"
+            tools:layout_conversion_absoluteWidth="283dp">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                app:iconifiedByDefault="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/search_food"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:background="#FFFFFF"-->
+            <!--                android:ems="10"-->
+            <!--                android:hint="Search"-->
+            <!--                android:inputType="textPersonName"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.2"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                tools:layout_conversion_absoluteHeight="24dp"-->
+            <!--                tools:layout_conversion_absoluteWidth="274dp" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="64dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/barrier"
+            app:layout_constraintEnd_toStartOf="@+id/search_cardview"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/right_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:srcCompat="@drawable/hamburgerlogo"
+            tools:layout_conversion_absoluteHeight="80dp"
+            tools:layout_conversion_absoluteWidth="80dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_editor_absoluteX="395dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="16dp"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="16dp"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="229dp" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="search_cardview,logo,left_guideline,right_guideline,top_guideline,bottom_guideline"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="logo,search_cardview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_editor_absoluteY="116dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allFoodRecyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/left_guideline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/restaurang_recyclerView"
+            app:layout_constraintTop_toBottomOf="@id/b10" />
+
+        <TextView
+            android:id="@+id/totalPiece"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardframe"
+            android:drawableBottom="@drawable/ic_baseline_fastfood_24"
+            android:gravity="center_horizontal"
+            android:onClick="gotoOrder"
+            android:padding="5dp"
+            android:text="@{String.valueOf(foodviewmodel.getTotalPiece)}"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/left_guideline" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="107dp"
+            app:layout_constraintBottom_toTopOf="@+id/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/top_guideline"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/fev_imageView"
+            android:layout_width="41dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:onClick="fevClick"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"
+            app:layout_constraintEnd_toStartOf="@+id/left_guideline"
+            app:layout_constraintStart_toEndOf="@+id/search_cardview"
+            app:layout_constraintTop_toTopOf="@+id/logo"
+            app:srcCompat="@drawable/heart" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/restaurang_recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/allFoodRecyclerview"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/right_guideline"
+            app:layout_constraintTop_toBottomOf="@id/b10" />
+
+        <ImageView
+            android:onClick="mealClick"
+            android:id="@+id/imageView14"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toStartOf="@+id/imageView18"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            app:srcCompat="@drawable/fish" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Meal"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@id/b10"
+            app:layout_constraintEnd_toEndOf="@+id/imageView14"
+            app:layout_constraintStart_toStartOf="@+id/imageView14"
+            app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+        <ImageView
+            android:onClick="dessertClick"
+            android:id="@+id/imageView18"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+            app:layout_constraintEnd_toStartOf="@+id/imageView19"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView14"
+            app:layout_constraintTop_toTopOf="@+id/imageView14"
+            app:srcCompat="@drawable/sweet" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Dessert"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@id/b10"
+            app:layout_constraintEnd_toEndOf="@+id/imageView18"
+            app:layout_constraintStart_toStartOf="@+id/imageView18"
+            app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+
+        <ImageView
+            android:onClick="beverageClick"
+            android:id="@+id/imageView19"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/left_guideline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView18"
+            app:layout_constraintTop_toTopOf="@+id/imageView18"
+            app:srcCompat="@drawable/drink" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Beverage"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@id/b10"
+            app:layout_constraintEnd_toEndOf="@+id/imageView19"
+            app:layout_constraintStart_toStartOf="@+id/imageView19"
+            app:layout_constraintTop_toBottomOf="@+id/imageView19" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Search By :"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView14"
+            app:layout_constraintEnd_toStartOf="@+id/left_guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/right_guideline"
+            app:layout_constraintTop_toBottomOf="@id/barrier"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/b10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="textView3,imageView19,textView9,imageView18,textView10"
+            tools:layout_editor_absoluteY="731dp" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/foodType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="imageView14,textView3,imageView19,textView9,imageView18,textView2,textView10"
+            app:layout_constraintBottom_toTopOf="@id/b10"
+            app:layout_constraintEnd_toStartOf="@id/left_guideline"
+            app:layout_constraintStart_toEndOf="@id/right_guideline"
+            app:layout_constraintTop_toBottomOf="@id/barrier" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
