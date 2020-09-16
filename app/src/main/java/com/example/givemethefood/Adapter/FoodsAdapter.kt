@@ -101,14 +101,14 @@ class FoodsAdapter(
             foodViewModel.totalPiece.value = totalPiece?.plus(1)
             foodPosition.piece += 1
             foodViewModel.addPiece(foodPosition.foodId!!, foodPosition)
-            notifyItemChanged(position)
+            notifyDataSetChanged()
         }
         holder.itemView.remove_imageView.setOnClickListener {
             if (totalPiece != 0) {
                 foodPosition.piece -= 1
                 foodViewModel.totalPiece.value = totalPiece?.minus(1)
                 foodViewModel.minusPiece(foodPosition.foodId!!, foodPosition)
-                notifyItemChanged(position)
+                notifyDataSetChanged()
             }
         }
 
@@ -116,19 +116,13 @@ class FoodsAdapter(
             when (foodPosition.isfev) {
                 true -> {
                     foodPosition.isfev = false
-                    foodViewModel.updateFavourite(foodPosition.foodId!!, foodPosition)
                 }
                 else -> {
                     foodPosition.isfev = true
-                    foodViewModel.updateFavourite(foodPosition.foodId!!, foodPosition)
                 }
             }
-            notifyItemChanged(position)
-            Log.i(
-                "fev", "${foodPosition.foodId} + " +
-                        "${foodPosition.foodname} + " +
-                        "${foodPosition.isfev}"
-            )
+            foodViewModel.updateFavourite(foodPosition.foodId!!, foodPosition)
+            notifyDataSetChanged()
         }
 
     }
@@ -146,7 +140,9 @@ class FoodsAdapter(
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 val resultList = ArrayList<FoodsItem>()
-                for (row in foodlist) if (row.foodname?.toLowerCase(Locale.ROOT)?.contains(charSearch.toLowerCase(Locale.ROOT))!!) resultList.add(row)
+                for (row in foodlist) if (row.foodname?.toLowerCase(Locale.ROOT)
+                        ?.contains(charSearch.toLowerCase(Locale.ROOT))!!
+                ) resultList.add(row)
                 foodlist = resultList
 
                 val filterResults = FilterResults()

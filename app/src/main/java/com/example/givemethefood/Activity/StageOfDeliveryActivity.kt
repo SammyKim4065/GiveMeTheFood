@@ -44,7 +44,6 @@ class StageOfDeliveryActivity : AppCompatActivity() {
         displayColorStage()
     }
 
-
     @SuppressLint("SetTextI18n")
     private fun displayDriverInformation() {
         val driverViewModel = DriverViewModel()

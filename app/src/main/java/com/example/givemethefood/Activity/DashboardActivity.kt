@@ -38,9 +38,11 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
         foodViewModel = ViewModelInstance.getFoodInstance(this, this, this)
+        userViewModel = ViewModelInstance.getUserInstance(this, this, this)
         binding.lifecycleOwner = this
         binding.foodviewmodel = foodViewModel
         isVisibleView(false)
+        userViewModel.refreshAllUser()
         observeAllFood()
         filterFoodByName()
     }
@@ -50,7 +52,7 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val restaurant = ViewModelInstance.getRestaurantInstance(this, this, this).allRestaurant
         restaurant.observe(this, Observer {
-            binding.restaurangRecyclerView.adapter = RestaurantFilterAdapter(it,this)
+            binding.restaurangRecyclerView.adapter = RestaurantFilterAdapter(it, this)
         })
     }
 
@@ -111,8 +113,6 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
 
     private fun observeAllFood() {
         currentUser = intent.getIntExtra("currentUser", 0)
-        userViewModel = ViewModelInstance.getUserInstance(this, this, this)
-        userViewModel.refreshAllUser()
         userViewModel.getUserWithFoodByName(currentUser).observe(this, Observer {
             for (item in it) {
                 initialsAllFoodRecyclerview(item.foods)
@@ -145,8 +145,8 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
         )
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onDestroy() {
+        super.onDestroy()
         foodViewModel.totalPiece.postValue(0)
     }
 
@@ -204,7 +204,7 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
         val resFood: ArrayList<FoodsItem> = ArrayList()
         userViewModel.getUserWithFoodByName(currentUser).observe(this, Observer {
             for (item in it) {
-                for (food in item.foods!!){
+                for (food in item.foods!!) {
                     if (food.resIdFk == restaurantItem.resId) resFood.add(food)
                 }
             }
@@ -217,7 +217,7 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
         val mealFood: ArrayList<FoodsItem> = ArrayList()
         userViewModel.getUserWithFoodByName(currentUser).observe(this, Observer {
             for (item in it) {
-                for (food in item.foods!!){
+                for (food in item.foods!!) {
                     if (food.foodtype == "dish meal") mealFood.add(food)
                 }
             }
@@ -225,11 +225,12 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
             setAdapterLayoutManager(1)
         })
     }
+
     fun dessertClick(view: View) {
         val dessertFood: ArrayList<FoodsItem> = ArrayList()
         userViewModel.getUserWithFoodByName(currentUser).observe(this, Observer {
             for (item in it) {
-                for (food in item.foods!!){
+                for (food in item.foods!!) {
                     if (food.foodtype == "dessert") dessertFood.add(food)
                 }
             }
@@ -237,11 +238,12 @@ class DashboardActivity : AppCompatActivity(), RestaurantFilterAdapter.ClickList
             setAdapterLayoutManager(1)
         })
     }
+
     fun beverageClick(view: View) {
         val beverageFood: ArrayList<FoodsItem> = ArrayList()
         userViewModel.getUserWithFoodByName(currentUser).observe(this, Observer {
             for (item in it) {
-                for (food in item.foods!!){
+                for (food in item.foods!!) {
                     if (food.foodtype == "beverage") beverageFood.add(food)
                 }
             }
